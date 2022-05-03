@@ -43,7 +43,7 @@ class LargeInt{
 
     //Operation Overloading
     LargeInt operator+(LargeInt&);
-    // LargeInt operator-(LargeInt&);
+    LargeInt operator-(LargeInt&);
     // LargeInt operator*(LargeInt&);
     // LargeInt operator/(LargeInt&);
     // LargeInt operator%(LargeInt&);

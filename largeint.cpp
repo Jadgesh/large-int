@@ -137,13 +137,99 @@ bool LargeInt :: operator<=(LargeInt &other){
 // Operator Overloading
 LargeInt LargeInt :: operator+(LargeInt &other){
   LargeInt sum;
-  
+  // If both operands are the same sign, we can just add the digits
+  // and keep the sign
+  if(this->isNegative() == other.isNegative()){
+    DLListIterator<int> thisIterator = this->data.begin();
+    DLListIterator<int> otherIterator = other.data.begin();
+
+    bool carry = false;
+    while(thisIterator != this->data.postEnd() && otherIterator != other.data.postEnd()){
+      int val = *thisIterator + *otherIterator;
+
+      if(carry)
+        val++;
+
+      carry = val > 9 ? true : false;
+      sum.data.insert(val%10);
+      
+      ++thisIterator;
+      ++otherIterator;
+    }
+
+    while(thisIterator != this->data.postEnd()){
+      int val = *thisIterator;
+
+      if(carry)
+        val++;
+
+      carry = val > 9 ? true : false;
+
+      sum.data.insert(val%10);
+      
+      ++thisIterator;
+    }
+
+    while(otherIterator != other.data.postEnd()){
+      int val = *otherIterator;
+
+      if(carry)
+        val++;
+
+      carry = val > 9 ? true : false;
+
+      sum.data.insert(val%10);
+      
+      ++otherIterator;
+    }
+
+    if(carry)
+      sum.data.insert(1);
+
+    sum.setNegative(this->isNegative());
+  }else{
+    LargeInt negation;
+    if(this->isNegative()){
+      // Lhand is negative
+      negation = *this;
+      negation.setNegative(false);
+
+      sum = other - negation;
+    }else{
+      // Rhand is negative
+      negation = other;
+      negation.setNegative(false);
+
+      sum = *this - negation;
+    }
+  }
   return sum;
 }
 
-// LargeInt LargeInt :: operator-(LargeInt &other){
-  
-// }
+LargeInt LargeInt :: operator-(LargeInt &other){
+  LargeInt difference;
+  if(this->isNegative() == other.isNegative()){
+
+  }else{
+    if(this->isNegative()){
+      LargeInt negation = *this;
+      negation.setNegative(false);
+
+      difference = negation + other;
+
+      difference.setNegative(true);
+    }else{
+      LargeInt negation = other;
+      negation.setNegative(false);
+
+      difference = *this + negation;
+
+      difference.setNegative(false);
+    }
+  }
+
+  return difference;
+}
 
 // LargeInt LargeInt :: operator*(LargeInt &other){
   
