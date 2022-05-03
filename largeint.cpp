@@ -209,6 +209,50 @@ LargeInt LargeInt :: operator+(LargeInt &other){
 LargeInt LargeInt :: operator-(LargeInt &other){
   LargeInt difference;
   if(this->isNegative() == other.isNegative()){
+    LargeInt minuend = *this;
+    LargeInt subtrahend = other;
+
+    if(this->isNegative()){
+      subtrahend.setNegative(false);
+      difference = minuend + subtrahend;
+    }else{
+      // a - b
+      // minuend - subtrahend = difference
+
+      // Assuming numbers are positive
+      if(*this < other){
+        minuend = other;
+        subtrahend = *this;
+        difference.setNegative(true);
+      }else{
+        difference.setNegative(false);
+      }
+
+      DLListIterator<int> mItr = minuend.data.begin();
+      DLListIterator<int> sItr = subtrahend.data.begin();
+
+      bool borrow = false;
+      while(mItr != minuend.data.postEnd() && sItr != subtrahend.data.postEnd()){
+        int val = *mItr;
+
+        if(borrow)
+          val--;
+
+        borrow = false;
+
+        if(*sItr > val){
+          borrow = true; // We need to borrow
+          val += 10;
+        }
+
+        val -= *sItr;
+
+        difference.data.insert(val);
+
+        ++mItr;
+        ++sItr;
+      }
+    }
 
   }else{
     if(this->isNegative()){
