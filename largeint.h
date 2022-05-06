@@ -41,7 +41,10 @@ class LargeInt{
     // Insertion Overloading 
     friend std::ostream& operator<<(std::ostream&, LargeInt&);
 
+    LargeInt operator=(const int&);
+    LargeInt operator++(int);
     //Operation Overloading
+    LargeInt operator+(const int&);
     LargeInt operator+(LargeInt&);
     LargeInt operator-(LargeInt&);
     // LargeInt operator*(LargeInt&);

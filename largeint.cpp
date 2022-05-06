@@ -133,7 +133,28 @@ bool LargeInt :: operator<=(LargeInt &other){
   return false;
 }
 
+// example Largeint x = 123123412412; 
+// Store each digit of x into our largeint
+LargeInt LargeInt :: operator=(const int& number){
+  LargeInt temp;
+  int num = number;
 
+  if(num < 0){
+    temp.setNegative(true);
+    num *= -1;
+  }
+
+  while(num != 0){
+    temp.insertDigit(num % 10);
+    num /= 10;
+  }
+
+  return temp;
+}
+
+LargeInt LargeInt :: operator++(int){
+
+}
 // Operator Overloading
 LargeInt LargeInt :: operator+(LargeInt &other){
   LargeInt sum;
