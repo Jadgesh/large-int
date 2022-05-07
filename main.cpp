@@ -1,12 +1,7 @@
 #include <iostream>
-#include "largeint.h"
+#include "LargeInt.h"
 
 int main(){
-    while(true){
-        LargeInt i;
-        i = 9123124;
-
-        std::cout << i;
         std::cout << "x: ";
         LargeInt x;
         std::cin >> x;
@@ -24,6 +19,7 @@ int main(){
         std::cout << x << " + " << y << " = " << z << "\n";
         z = x - y;
         std::cout << x << " - " << y << " = " << z << "\n";
-    }
+        z = x * y;
+        std::cout << x << " * " << y << " = " << z << "\n";
     return 0;
 }

@@ -14,6 +14,11 @@ void DLList<T> :: init(){
 
 template <class T>
 DLList<T> :: ~DLList(){
+  DestroyList();
+}
+
+template <class T>
+void DLList<T> :: DestroyList(){
   if(!isEmpty()){
     Node<T> *p = first->next;
 
@@ -31,7 +36,6 @@ DLList<T> :: ~DLList(){
     _length = 0;
   }
 }
-
 template <class T>
 DLList<T> :: DLList(const DLList<T> &other){
   init();

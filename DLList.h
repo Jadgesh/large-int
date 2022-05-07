@@ -18,6 +18,7 @@ class DLList{
   public:
     DLList(); // Constructor
     ~DLList(); // Deconstructor
+    void DestroyList();
 
     void init(); // Initializes our default values
 
