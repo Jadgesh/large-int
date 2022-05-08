@@ -53,9 +53,7 @@ LargeInt :: LargeInt(const int &other){
 }
 
 LargeInt LargeInt :: operator++(int){
-  LargeInt temp = 1;
-  *this = *this + temp;
-  return temp;
+  return *this;
 }
 
 /***********************************************
@@ -202,24 +200,22 @@ LargeInt LargeInt :: operator-(LargeInt &other){
       difference.isNeg = false;
     }
   }
-
   return difference;
 }
 
 LargeInt LargeInt :: operator*(LargeInt &multiplier){
   LargeInt product;
   LargeInt temp = multiplier;
-  std::cout << "Entered Multi\n";
   // Set sign
   if(this->isNeg || multiplier.isNeg)
     product.isNeg = true;
 
   temp.isNeg = false; // Toggle sign to make addition and looping easier
-
+  LargeInt one = 1;
   for(LargeInt i = 0; i < temp; i++){
     product = product + *this;
   }
-
+  
   return product;
 }
 /***********************************************

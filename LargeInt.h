@@ -54,41 +54,4 @@ class LargeInt{
     bool operator<(LargeInt&);
     bool operator<=(LargeInt&);
 };
-// class LargeInt{
-//   private:
-//     DLList<int> data;
-//     bool negative;
-//   public:
-//     void setNegative(bool);
-//     bool isNegative(){return negative;}
-//     void insertDigit(int);
-//     std::ostream& printData(std::ostream&);
-
-//     // Copy Constructor
-//     LargeInt(const int &);
-
-//     // Extraction Overloading
-//     friend std::istream& operator>>(std::istream&, LargeInt&);
-
-//     // Insertion Overloading 
-//     friend std::ostream& operator<<(std::ostream&, LargeInt&);
-
-//     LargeInt operator=(const int&);
-//     LargeInt operator++(int);
-//     //Operation Overloading
-//     LargeInt operator+(const int&);
-//     LargeInt operator+(LargeInt&);
-//     LargeInt operator-(LargeInt&);
-//     // LargeInt operator*(LargeInt&);
-//     // LargeInt operator/(LargeInt&);
-//     // LargeInt operator%(LargeInt&);
-
-//     // Conditional Overloading
-//     bool operator==(LargeInt&);
-//     bool operator>(LargeInt&);
-//     bool operator>=(LargeInt&);
-//     bool operator<(LargeInt&);
-//     bool operator<=(LargeInt&);
-// };
-
 #endif
