@@ -216,6 +216,26 @@ bool DLList<T> :: remove(T target){
 }
 
 template <class T>
+void DLList<T> :: removeLeadingNode(T target){
+  Node<T> *p = last;
+
+  if(p != nullptr){
+    // Check our node to see if it's data is zero
+    while(p->data == target && p != first){
+      if(p != first){
+        p = p->prev;
+        delete p->next;
+        p->next = nullptr;
+        last = p;
+      }
+
+      // WE DON'T WANT TO DELETE THE FIRST NODE
+      _length--;
+    }
+  }
+}
+
+template <class T>
 DLListIterator<T> DLList<T> :: begin(){
   DLListIterator<T> temp(first);
   return temp;

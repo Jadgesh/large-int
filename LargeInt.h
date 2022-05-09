@@ -27,25 +27,26 @@
 
 class LargeInt{
 
-  friend std::istream& operator>>(std::istream&, LargeInt&); // Extraction overloading
   friend std::ostream& operator<<(std::ostream&, LargeInt&); // Insertion overloading
+  friend std::istream& operator>>(std::istream&, LargeInt&); // Extraction overloading
 
   private:
     DLList<int> data;
     bool isNeg;
+    bool isZero;
   public:
-    LargeInt(); // Default Constructor
-    LargeInt(const int &); // Copy Constructor
+    LargeInt();
+    LargeInt(const int &);
 
-    // Increment Overloading
-    LargeInt operator++(int);
+    void insertDigit(int, bool);
+    
+    LargeInt operator++();
 
     // Operation Overloading
     LargeInt operator+(LargeInt&);
     LargeInt operator-(LargeInt&);
     LargeInt operator*(LargeInt&);
-    // LargeInt operator/(LargeInt&);
-    // LargeInt operator%(LargeInt&);
+    LargeInt operator/(LargeInt&);
 
     // Conditional Overloading
     bool operator==(LargeInt&);
@@ -53,5 +54,21 @@ class LargeInt{
     bool operator>=(LargeInt&);
     bool operator<(LargeInt&);
     bool operator<=(LargeInt&);
+
+    void toggleIsZero();
+
+  // private:
+  //   DLList<int> data;
+  //   bool isNeg;
+  // public:
+  //   LargeInt(); // Default Constructor
+  //   LargeInt(const int &); // Copy Constructor
+
+  //   // Increment Overloading
+  //   LargeInt operator++(int);
+
+  //   LargeInt operator*(LargeInt&);
+  //   // LargeInt operator/(LargeInt&);
+  //   // LargeInt operator%(LargeInt&);
 };
 #endif

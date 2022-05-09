@@ -35,6 +35,8 @@ class DLList{
     bool searchFor(T); // Search for an item and return if it's apart of our list
     bool remove(T); // Remove the first occurence of an item from the list
 
+    void removeLeadingNode(T);
+
     // Iterator methods
     DLListIterator<T> begin(); // Returns an iterator of the first node
     DLListIterator<T> end(); // Returns an iterator of the last node
